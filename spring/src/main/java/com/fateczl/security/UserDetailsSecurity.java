@@ -2,7 +2,6 @@ package com.fateczl.security;
 
 import com.fateczl.entity.User;
 import com.fateczl.repository.UserRepository;
-import com.fateczl.repository.adapter.UserRepositoryImplAdapter;
 import com.fateczl.security.dto.AuthUserDetails;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

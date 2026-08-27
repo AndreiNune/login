@@ -1,6 +1,7 @@
 package com.fateczl.security;
 
 import com.fateczl.entity.Token;
+import com.fateczl.security.dto.AuthUserDetails;
 import com.fateczl.entity.Login;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -26,5 +27,15 @@ public class TokenSecurity {
         authenticationManager.authenticate((authToken));
         UserDetails userDetails = userDetailsService.loadUserByUsername(login.username());
         return new Token(jwtSecurity.generateToken(userDetails));
+    }
+    
+    public AuthUserDetails autenticar(Login login){
+        UsernamePasswordAuthenticationToken authToken = 
+            new UsernamePasswordAuthenticationToken(
+                login.username(),
+                login.password());
+               authenticationManager.authenticate(authToken);
+            return (AuthUserDetails) userDetailsService
+            .loadUserByUsername(login.username()); 
     }
 }
